@@ -9,10 +9,21 @@ npm install mysql2 (for database)
 npm install dotenv (for environment?)
 
 ############## files structure ########
-project/
-├── server.js
-├── .env
-├── package.json
+your-project/
+├── client/             # Frontend (React + Vite)
+│   ├── src/
+│   ├── public/
+│   ├── .env            # Frontend .env (VITE_ vars only)
+│   └── vite.config.js
+│
+├── server/             # Backend (Express + Node.js + MySQL)
+│   ├── db.js           # MySQL database connection
+│   ├── routes/         # API route handlers (optional, good for scaling)
+│   ├── server.js       # Main Express app
+│   └── .env            # Backend secrets: DB creds, JWT keys, etc.
+│
+├── package.json        # Might be at root, or separate in client/server
+└── README.md
 
 ################ server.js ################
 require('dotenv').config();

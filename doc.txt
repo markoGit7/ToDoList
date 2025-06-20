@@ -1,0 +1,39 @@
+############# Server ##############
+npm install express (for server)
+npm install --save-dev nodemon (for auto refresh on change)
+
+############# DB ###################
+npm install mysql2 (for database)
+
+############# .env #################
+npm install dotenv (for environment?)
+
+############## files structure ########
+project/
+├── server.js
+├── .env
+├── package.json
+
+################ server.js ################
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB error:', err));
+
+app.use(express.json());
+
+app.get('/', (req, res) => res.send('Server is live!'));
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+
+##################### .env file ###########################
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/mydb

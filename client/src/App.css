@@ -3,3 +3,11 @@
   font-family: Arial, sans-serif;
   padding: 2rem;
 }
+
+body {
+    background-color: green;
+}
+
+h1, p {
+  color: white;
+}

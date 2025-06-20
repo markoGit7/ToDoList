@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev:client": "vite --config client/vite.config.js",
     "dev:server": "node server/server.js",
@@ -21,6 +22,8 @@
   "homepage": "https://github.com/markoGit7/ToDoList#readme",
   "dependencies": {
     "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mysql2": "^3.14.1",
     "react": "^19.1.0",

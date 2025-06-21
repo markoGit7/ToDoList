@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/markoGit7/ToDoList#readme",
   "dependencies": {
+    "axios": "^1.10.0",
     "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",

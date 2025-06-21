@@ -8,12 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 app.get('/', (req, res) => {
     res.send("Back-End Connected!✅");
 });
 
 app.get('/api/todos', (req, res) => {
-    db.query('SELECT 1+1 AS `Calculation`', (err, results) => {
+    db.query('SELECT 1+1+1 AS `Calculation`', (err, results) => {
         if (err) {
             console.error('❌ Error fetching todos:', err.message);
             return res.status(500).send('Server error');

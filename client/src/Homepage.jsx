@@ -1,27 +1,45 @@
 import { useEffect, useState } from 'react';
+import axios from "axios";
 
 function Home() {
 
-    const [calcResult, setCalcResult] = useState([]);
+    const [text, setText] = useState("");
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/todos')
-      .then(res => res.json())
-      .then(data => {
-        setCalcResult(data[0].Calculation);
-      })
-      .catch(err => {
-        console.error('Fetch error:', err);
-        setCalcResult('Error fetching data');
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!text.trim()) return;
+
+    try {
+      const response = await fetch("http://localhost:3000/items", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }), // send { text: "input value" }
       });
-  }, []);
+
+      const data = await response.json();
+      console.log("Response from server:", data);
+
+      setText(""); // clear input
+    } catch (err) {
+      console.error("Error sending data:", err);
+    }
+  };
+
+
+   
 
     return (
         <>
-            <h1>This is text from the home page</h1>  
-            <p>Computer science is the study of computation, information, and automation.[1][2][3] Computer science spans theoretical disciplines (such as algorithms, theory of computation, and information theory) to applied disciplines (including the design and implementation of hardware and software).[4][5][6]</p>
-            
-            <h3>Here will spawn the db: {calcResult !== null ? calcResult : 'Loading...'}</h3>
+            <h1>To Do List App</h1>
+
+            <form onSubmit={handleSubmit}>
+              <input type='text' placeholder='Enter Text' onChange={(e) => setText(e.target.value)}/>
+
+              <button type='submit'>Submit</button>
+            </form>
         </>
     );
 };
